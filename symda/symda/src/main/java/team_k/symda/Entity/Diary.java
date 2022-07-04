@@ -3,6 +3,7 @@ package team_k.symda.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import team_k.symda.Constants.Emotion;
 import team_k.symda.Constants.Weather;
 
 import javax.persistence.*;
@@ -34,6 +35,9 @@ public class Diary {
     @OneToOne   // 일대일 단방향 관계
     @JoinColumn(name = "question_id")
     private Question question;
+
+    @Enumerated(EnumType.STRING)
+    private Emotion emotion;
 
     public Diary(Long diary_id, String content, Weather weather, LocalDateTime created_at, User user, Question question) {
         this.diary_id = diary_id;
