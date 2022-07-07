@@ -6,6 +6,7 @@ create table diary (
 	weather enum('SUNNY', 'CLOUDY', 'RAINY', 'FOGGY', 'SNOWY'),
 	created_at datetime default current_timestamp,
 	emotion enum('JOY', 'SAD', 'SURPRISED', 'ANGER', 'FEAR', 'HATE', 'NEUTRAL'),
+	month varchar(255),
 	primary key (diary_id),
 	user_id bigint,
 	question_id bigint
