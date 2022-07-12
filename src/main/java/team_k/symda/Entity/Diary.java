@@ -1,6 +1,7 @@
 package team_k.symda.Entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import team_k.symda.Constants.Emotion;
@@ -9,7 +10,7 @@ import team_k.symda.Constants.Weather;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter @Setter @ToString
+@Getter @Setter @ToString @NoArgsConstructor
 @Entity
 public class Diary {
     @Id
