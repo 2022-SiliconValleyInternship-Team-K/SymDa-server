@@ -36,6 +36,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
+    - name: create application.yml file
+      run: |
+        mkdir src/main/resources
+        touch src/main/resources/application.yml
+        echo "${{ secrets.ENV_VARS }}" >> src/main/resources/application.yml
+        
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
