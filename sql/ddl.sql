@@ -37,6 +37,7 @@ create table comment (
 create table user (
 	user_id bigint auto_increment,
 	email varchar(255),
+	password varchar(255),
 	primary key (user_id)
 );
 
