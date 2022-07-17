@@ -1,6 +1,7 @@
 package team_k.symda.Entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,17 +10,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long user_id;   // 유저 pk
 
-    private String email;
+    private String email;   // 이메일 주소
 
-    public User(Long user_id, String email) {
-        this.user_id = user_id;
+    private String password;    // 비밀번호
+
+    public User(String email, String password) {
         this.email = email;
+        this.password = password;
     }
 }
