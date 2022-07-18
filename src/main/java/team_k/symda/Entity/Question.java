@@ -10,10 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Getter @Setter @ToString @NoArgsConstructor
 @Entity
 public class Question {
     @Id

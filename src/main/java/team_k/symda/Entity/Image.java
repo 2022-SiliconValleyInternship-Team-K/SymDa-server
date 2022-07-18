@@ -8,10 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Getter @Setter @ToString @NoArgsConstructor
 @Entity
 public class Image {
 
