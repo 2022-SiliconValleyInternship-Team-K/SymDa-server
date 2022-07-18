@@ -1,6 +1,7 @@
 package team_k.symda.Entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,17 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter @Setter @ToString
+@Getter @Setter @ToString @NoArgsConstructor
 @Entity
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long question_id;
+    private Long question_id;   // 질문 pk
 
-    private String question;
+    private String question;    // 질문
 
-    public Question(Long question_id, String question) {
-        this.question_id = question_id;
+    public Question(String question) {
         this.question = question;
     }
 }
