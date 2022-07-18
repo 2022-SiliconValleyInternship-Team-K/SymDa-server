@@ -14,11 +14,11 @@ public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long image_id;
+    private Long image_id;  // 사진 pk
 
-    private String image;
+    private String image;   // 이미지 주소
 
-    private LocalDateTime created_at;
+    private LocalDateTime created_at;   // 생성 시간
     @PrePersist
     public void created_at(){
         this.created_at = LocalDateTime.now();
@@ -26,10 +26,9 @@ public class Image {
 
     @OneToOne   // 일대일 단방향 관계
     @JoinColumn(name = "diary_id")
-    private Diary diary;
+    private Diary diary;    // 일기 pk (FK)
 
-    public Image(Long image_id, String image, LocalDateTime created_at, Diary diary) {
-        this.image_id = image_id;
+    public Image(String image, LocalDateTime created_at, Diary diary) {
         this.image = image;
         this.created_at = created_at;
         this.diary = diary;

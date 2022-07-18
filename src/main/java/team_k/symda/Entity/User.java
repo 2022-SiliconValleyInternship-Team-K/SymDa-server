@@ -1,23 +1,28 @@
 package team_k.symda.Entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @Entity
-@Builder
-@Table(name="User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long user_id;   // 유저 pk
 
-    @Column
-    private String email;
+    private String email;   // 이메일 주소
 
-    @Column
-    private String password;
+    private String password;    // 비밀번호
 
     public User(String email, String password) {
         this.email = email;
