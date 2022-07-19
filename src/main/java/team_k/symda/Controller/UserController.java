@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import team_k.symda.Service.UserRequest;
 import team_k.symda.Service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -31,11 +34,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserRequest request) {
+    public ResponseEntity login(@RequestBody UserRequest request, HttpServletRequest request2) {
         log.info("email = {}, password = {}", request.getEmail(), request.getPassword());
         if(userService.login(request.getEmail(), request.getPassword()).equals("Success")) {
             return new ResponseEntity(HttpStatus.OK);
         }
+        //세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성
+        HttpSession session = request2.getSession();
+        //세션에 로그인 회원 정보 보관
+        session.setAttribute("loginMember", request.getEmail());
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }
