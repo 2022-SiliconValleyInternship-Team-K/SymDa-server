@@ -43,10 +43,8 @@ jobs:
         echo "${{ secrets.ENV_VARS }}" >> src/main/resources/application.properties
         touch src/main/resources/awsaccess.yml
         echo "${{ secrets.AWS_ACCESS_KEY_ID }}" >> src/main/resources/awsaccess.yml
-        cat src/main/resources/awsaccess.yml
         touch src/main/resources/awssecret.yml
         echo "${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> src/main/resources/awssecret.yml
-        cat src/main/resources/awsaccess.yml
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
