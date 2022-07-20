@@ -1,11 +1,14 @@
 package team_k.symda.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
 import team_k.symda.Repository.DiaryRepository;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,12 +20,19 @@ public class DiaryServiceImpl implements DiaryService{
     // 의존성 주입
     private final DiaryRepository diaryRepository;
 
+    @Autowired
+    private S3Uploader s3Uploader;
+
     public DiaryServiceImpl(DiaryRepository diaryRepository) {
         this.diaryRepository = diaryRepository;
     }
 
     @Override @Transactional
-    public Long keepDiary(Diary diary) {
+    public Long keepDiary(MultipartFile image, Diary diary) throws IOException {
+        if(!image.isEmpty()) {
+            String storedFileName = s3Uploader.upload(image,"images");
+            diary.setImageUrl(storedFileName);
+        }
         Diary savedDiary = diaryRepository.save(diary);
         return savedDiary.getDiary_id();
     }

@@ -1,13 +1,16 @@
 package team_k.symda.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
 import team_k.symda.Service.DiaryService;
 import team_k.symda.domain.DiaryDeleteResultVO;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -27,11 +30,11 @@ public class DiaryController {
      * 일기 작성 - POST
      * */
     @ResponseBody   // Long 타입을 리턴하고 싶은 경우 붙여야 함 (Long - 객체)
-    @PostMapping("/diary/new")
-    public Long saveDiary(@RequestBody Diary diary){
+    @PostMapping(value="/diary/new",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Long saveDiary(@RequestBody Diary diary, @RequestParam(value="image") MultipartFile image) throws IOException {
         System.out.println("DiaryController.saveDiary");
 
-        Long diaryId = diaryService.keepDiary(diary);
+        Long diaryId = diaryService.keepDiary(image, diary);
         return diaryId;
     }
 

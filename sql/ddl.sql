@@ -7,6 +7,7 @@ create table diary (
 	created_at datetime default current_timestamp,
 	emotion enum('JOY', 'SAD', 'SURPRISED', 'ANGER', 'FEAR', 'HATE', 'NEUTRAL'),
 	month varchar(255),
+	image_url varchar(255)
 	primary key (diary_id),
 	user_id bigint,
 	question_id bigint
