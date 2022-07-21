@@ -2,6 +2,7 @@ package team_k.symda.Service;
 
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
+import team_k.symda.Entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -38,4 +39,8 @@ public interface DiaryService {
      * */
     public int cntMonthlyPlant(String month);
 
+    /*
+     * 유저의 새 일기 1개 조회
+     * */
+    public String findTop1Diary(User user_id);
 }
