@@ -2,10 +2,8 @@ package team_k.symda.Controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +40,7 @@ public class UserController {
         //세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성
         HttpSession session = request2.getSession();
         //세션에 로그인 회원 정보 보관
-        session.setAttribute("loginMember", request.getEmail());
+        session.setAttribute("loginMember", request);
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }
