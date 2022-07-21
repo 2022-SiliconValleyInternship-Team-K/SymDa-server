@@ -27,11 +27,12 @@ public class Diary {
     @Enumerated(EnumType.STRING)
     private Weather weather;    // 날씨
 
-    private LocalDate created_at;   // 생성 시간
+    @Column(name = "create_at")
+    private LocalDate created;   // 생성 시간
     @PrePersist // DB에 해당 테이블의 insert 연산을 실행할 때 같이 실행해라
-    public void created_at(){
-        this.created_at = LocalDate.now();
-        setMonth(created_at);
+    public void created(){
+        this.created = LocalDate.now();
+        setMonth(created);
     }
 
     private String month;   // 연월
@@ -52,13 +53,14 @@ public class Diary {
     @JoinColumn(name = "question_id")
     private Question question;  // 질문 pk (FK)
 
-    public Diary(String content, Weather weather, LocalDate created_at, String month, Emotion emotion, User user, Question question) {
+    public Diary(String content, Weather weather, LocalDate created, String month, Emotion emotion, User user, Question question) {
         this.content = content;
         this.weather = weather;
-        this.created_at = created_at;
+        this.created = created;
         this.month = month;
         this.emotion = emotion;
         this.user = user;
         this.question = question;
     }
+
 }
