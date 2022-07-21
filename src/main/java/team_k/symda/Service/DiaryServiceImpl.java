@@ -29,6 +29,7 @@ public class DiaryServiceImpl implements DiaryService{
 
     @Override @Transactional
     public Long keepDiary(MultipartFile image, Diary diary) throws IOException {
+        System.out.println("Diary service saveDiary");
         if(!image.isEmpty()) {
             String storedFileName = s3Uploader.upload(image,"images");
             diary.setImageUrl(storedFileName);
