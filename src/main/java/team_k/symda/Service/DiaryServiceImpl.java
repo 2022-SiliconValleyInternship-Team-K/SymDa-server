@@ -1,14 +1,18 @@
 package team_k.symda.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import com.mysql.cj.AbstractQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
+import team_k.symda.Entity.User;
 import team_k.symda.Repository.DiaryRepository;
 
 import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,5 +78,12 @@ public class DiaryServiceImpl implements DiaryService{
         List<Diary> diary_byMonth = diaryRepository.findByMonth(month);
         int plant = diary_byMonth.size();
         return plant;
+    }
+
+    @Override @Transactional
+    public String findTop1Diary(User user_id) {
+        Diary diary_orderByDiaryId = diaryRepository.findTop1ByUserOrderByCreatedDesc(user_id);
+        String content = diary_orderByDiaryId.getContent();
+        return content;
     }
 }

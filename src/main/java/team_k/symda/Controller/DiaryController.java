@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
+import team_k.symda.Entity.User;
 import team_k.symda.Service.DiaryService;
+import team_k.symda.Service.UserRequest;
 import team_k.symda.domain.DiaryDeleteResultVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -90,6 +93,18 @@ public class DiaryController {
     public int getMonthlyPlant(@PathVariable String month){
         int plant = diaryService.cntMonthlyPlant(month);
         return plant;
+    }
+
+    /*
+     * 유저의 새 일기 내용 1개 조회 - GET
+     * */
+    @ResponseBody
+    @GetMapping("/diary/content")
+    public String getDiaryContent(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        UserRequest user = (UserRequest) session.getAttribute("loginMember");
+        String diary = diaryService.findTop1Diary(user.getUser_id());
+        return diary;
     }
 
 }

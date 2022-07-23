@@ -3,6 +3,7 @@ package team_k.symda.Service;
 import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
+import team_k.symda.Entity.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,4 +41,8 @@ public interface DiaryService {
      * */
     public int cntMonthlyPlant(String month);
 
+    /*
+     * 유저의 새 일기 1개 조회
+     * */
+    public String findTop1Diary(User user_id);
 }
