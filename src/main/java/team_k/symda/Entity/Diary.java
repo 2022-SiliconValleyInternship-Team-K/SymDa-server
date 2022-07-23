@@ -27,7 +27,7 @@ public class Diary {
     @Enumerated(EnumType.STRING)
     private Weather weather;    // 날씨
 
-    @Column(name = "create_at")
+    @Column(name = "created_at")
     private LocalDate created;   // 생성 시간
     @PrePersist // DB에 해당 테이블의 insert 연산을 실행할 때 같이 실행해라
     public void created(){

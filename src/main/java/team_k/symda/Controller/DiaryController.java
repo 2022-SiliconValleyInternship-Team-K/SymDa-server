@@ -99,6 +99,7 @@ public class DiaryController {
         HttpSession session = request.getSession();
         UserRequest user = (UserRequest) session.getAttribute("loginMember");
         String diary = diaryService.findTop1Diary(user.getUser_id());
+//        String diary = diaryService.findTop1Diary(user_id);
         return diary;
     }
 
