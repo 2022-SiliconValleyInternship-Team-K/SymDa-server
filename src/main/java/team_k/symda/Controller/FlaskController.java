@@ -28,7 +28,6 @@ public class FlaskController {
             System.out.println("========br======" + sb.toString());
             if (sb.toString().contains("ok")) {
                 System.out.println("test");
-
             }
             br.close();
             System.out.println("" + sb.toString());
