@@ -42,6 +42,9 @@ public class Diary {
         this.month = year+month;
     }
 
+    @Column
+    private String imageUrl;
+
     @Enumerated(EnumType.STRING)
     private Emotion emotion;    // 감정
 
@@ -53,7 +56,7 @@ public class Diary {
     @JoinColumn(name = "question_id")
     private Question question;  // 질문 pk (FK)
 
-    public Diary(String content, Weather weather, LocalDate created, String month, Emotion emotion, User user, Question question) {
+    public Diary(String content, Weather weather, LocalDate created_at, String month, Emotion emotion, User user, Question question, String imageUrl) {
         this.content = content;
         this.weather = weather;
         this.created = created;
@@ -61,6 +64,7 @@ public class Diary {
         this.emotion = emotion;
         this.user = user;
         this.question = question;
+        this.imageUrl = imageUrl;
     }
 
 }

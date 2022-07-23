@@ -1,9 +1,11 @@
 package team_k.symda.Service;
 
+import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
 import team_k.symda.Entity.User;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,7 +14,7 @@ public interface DiaryService {
     /*
      * 일기 작성
      * */
-    public Long keepDiary(Diary diary);
+    public Long keepDiary(MultipartFile image, Diary diary) throws IOException;
 
     /*
      * 일기 삭제
