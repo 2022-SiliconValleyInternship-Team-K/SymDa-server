@@ -18,6 +18,11 @@ public interface DiaryRepository {
     Optional<Diary> findById(Long id);
 
     /*
+     * date로 Diary 찾기 (R) // ex) 20220724
+     * */
+    Optional<Diary> findByDate(String date);
+
+    /*
      * 월별 일기 반환 (R)
      * */
     List<Diary> findByMonth(String month);
@@ -26,6 +31,11 @@ public interface DiaryRepository {
      * id로 Diary 삭제 (D)
      * */
     void deleteById(Long id);
+
+    /*
+     * date로 Diary 삭제 (D)
+     * */
+    void deleteByDate(String date);
 
     /*
      * 유저의 일기 1개 반환 (R)
