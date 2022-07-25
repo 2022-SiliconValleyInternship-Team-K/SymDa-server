@@ -1,16 +1,15 @@
 package team_k.symda.Entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter
+@ToString
+@NoArgsConstructor
 @Entity
 public class Question {
     @Id
@@ -19,6 +18,7 @@ public class Question {
 
     private String question;    // 질문
 
+    @Builder
     public Question(String question) {
         this.question = question;
     }
