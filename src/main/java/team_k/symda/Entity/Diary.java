@@ -50,7 +50,11 @@ public class Diary {
     }
 
     @Column
-    private String imageUrl;
+    private String imageUrl;    // 이미지 주소
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     @Enumerated(EnumType.STRING)
     private Emotion emotion;    // 감정
@@ -66,8 +70,6 @@ public class Diary {
     @ManyToOne
     @JoinColumn(name = "comment_id")
     private Comment comment;
-
-    public void giveComment(Comment comment){this.comment=comment;} // emotion과 weather에 따라 comment set
 
     @Builder
     public Diary(String content, Weather weather, LocalDate createdAt, String month, String date, String imageUrl, Emotion emotion, User user, Question question, Comment comment) {
