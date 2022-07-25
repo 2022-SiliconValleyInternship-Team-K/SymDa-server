@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Getter
-@Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +22,7 @@ public class User {
 
     private String password;    // 비밀번호
 
+    @Builder
     public User(String email, String password) {
         this.email = email;
         this.password = password;

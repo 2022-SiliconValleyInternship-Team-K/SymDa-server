@@ -1,13 +1,14 @@
 package team_k.symda.Entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import team_k.symda.Constants.Emotion;
+import team_k.symda.Constants.Weather;
 
 import javax.persistence.*;
 
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter
+@ToString
+@NoArgsConstructor
 @Entity
 public class Comment {
 
@@ -19,13 +20,15 @@ public class Comment {
 
     private String music_url;   // 노래주소
 
-    @OneToOne
-    @JoinColumn(name = "diary_id")
-    private Diary diary;        // 일기 pk (FK)
+    private Emotion emotion;    // 감정
 
-    public Comment(String comment, String music_url, Diary diary) {
+    private Weather weather;    // 날씨
+
+    @Builder
+    public Comment(String comment, String music_url, Emotion emotion, Weather weather) {
         this.comment = comment;
         this.music_url = music_url;
-        this.diary = diary;
+        this.emotion = emotion;
+        this.weather = weather;
     }
 }
