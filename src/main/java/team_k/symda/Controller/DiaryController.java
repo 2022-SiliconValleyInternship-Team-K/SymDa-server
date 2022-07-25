@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import team_k.symda.Constants.Emotion;
 import team_k.symda.Entity.Diary;
-import team_k.symda.Entity.User;
 import team_k.symda.Service.DiaryService;
 import team_k.symda.Service.UserRequest;
-import team_k.symda.domain.DiaryDeleteResultVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -49,10 +47,8 @@ public class DiaryController {
      * */
     @ResponseBody
     @DeleteMapping("/diary/{diaryId}")
-    public DiaryDeleteResultVO deleteDiary(@PathVariable Long diaryId){
+    public void deleteDiary(@PathVariable Long diaryId){
         diaryService.deleteDiary(diaryId);
-        DiaryDeleteResultVO resultVO = new DiaryDeleteResultVO(1);  // 삭제 되었는지 flag를 반환할 json 객체
-        return resultVO;
     }
 
     /*
