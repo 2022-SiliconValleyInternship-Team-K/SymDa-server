@@ -26,12 +26,12 @@ public class Diary {
     private Weather weather;    // 날씨
 
     @Column(name = "created_at")
-    private LocalDate createdAt;   // 생성 시간
+    private LocalDate created;   // 생성 시간
     @PrePersist // DB에 해당 테이블의 insert 연산을 실행할 때 같이 실행해라
     public void createdAt(){
-        this.createdAt = LocalDate.now();
-        setMonth(createdAt);
-        setDate(createdAt);
+        this.created = LocalDate.now();
+        setMonth(created);
+        setDate(created);
     }
 
     private String month;   // 연월
@@ -72,10 +72,10 @@ public class Diary {
     private Comment comment;
 
     @Builder
-    public Diary(String content, Weather weather, LocalDate createdAt, String month, String date, String imageUrl, Emotion emotion, User user, Question question, Comment comment) {
+    public Diary(String content, Weather weather, LocalDate created, String month, String date, String imageUrl, Emotion emotion, User user, Question question, Comment comment) {
         this.content = content;
         this.weather = weather;
-        this.createdAt = createdAt;
+        this.created = created;
         this.month = month;
         this.date = date;
         this.imageUrl = imageUrl;
@@ -91,7 +91,7 @@ public class Diary {
                 .diary_id(diary_id)
                 .content(content)
                 .weather(weather)
-                .createdAt(createdAt)
+                .createdAt(created)
                 .month(month)
                 .date(date)
                 .emotion(emotion)
