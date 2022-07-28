@@ -13,7 +13,7 @@ import java.net.URL;
 public class FlaskController {
     @RequestMapping(value = "/flask", method = RequestMethod.GET)
     public String Test() {
-        String url = "http://ec2-3-34-4-46.ap-northeast-2.compute.amazonaws.com:22/";
+        String url = "http://ec2-3-34-4-46.ap-northeast-2.compute.amazonaws.com:5000/";
         String sb = "";
         
         try {
