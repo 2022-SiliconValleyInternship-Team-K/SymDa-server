@@ -59,10 +59,10 @@ public class DiaryServiceImpl implements DiaryService{
 //        Question question = questionById.orElseThrow();
 
         // diaryCreateRequestDto의 weather과 emotion으로 적절한 comment 가져옴 (FK)
-        Optional<Comment> commentByEmotionAndWeather = commentRepository.findByEmotionAndWeather(diary.getEmotion(), diary.getWeather());
-        Comment comment = commentByEmotionAndWeather.orElseThrow();
-        System.out.println(comment);
-        diary.setComment(comment);
+//        Optional<Comment> commentByEmotionAndWeather = commentRepository.findByEmotionAndWeather(diary.getEmotion(), diary.getWeather());
+//        Comment comment = commentByEmotionAndWeather.orElseThrow();
+//        System.out.println(comment);
+//        diary.setComment(comment);
 
         //Diary diary = diaryCreateRequestDto.toEntity(user, question, comment);
 
