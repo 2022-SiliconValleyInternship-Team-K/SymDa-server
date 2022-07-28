@@ -11,6 +11,9 @@ import team_k.symda.Entity.Diary;
 import team_k.symda.Entity.Question;
 import team_k.symda.Entity.User;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class DiaryCreateRequestDto {
     private String content;

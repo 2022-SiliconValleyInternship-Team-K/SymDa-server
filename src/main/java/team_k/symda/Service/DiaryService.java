@@ -17,7 +17,7 @@ public interface DiaryService {
     /*
      * 일기 작성
      * */
-    public DiaryResponseDto keepDiary(MultipartFile image, DiaryCreateRequestDto diaryCreateRequestDto) throws IOException;
+    public void keepDiary(MultipartFile image, Diary diary) throws IOException;
 
     /*
      * id로 일기 삭제
