@@ -12,12 +12,10 @@ import java.net.URL;
 
 public class FlaskController {
     @RequestMapping(value = "/flask", method = RequestMethod.GET)
-    public void Test() {
-//    public ModelAndView Test() {
-//        ModelAndView mav = new ModelAndView();
-
-        String url = "http://127.0.0.1:5000/";
+    public String Test() {
+        String url = "http://ec2-3-34-4-46.ap-northeast-2.compute.amazonaws.com:22/";
         String sb = "";
+        
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
@@ -37,10 +35,6 @@ public class FlaskController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-//        mav.addObject("test1", sb.toString()); // "test1"는 jsp파일에서 받을때 이름,
-//        //sb.toString은 value값(여기에선 test)
-//        mav.addObject("fail", false);
-//        mav.setViewName("test");   // jsp파일 이름
-//        return mav;
+       return sb.toString();
     }
 }
