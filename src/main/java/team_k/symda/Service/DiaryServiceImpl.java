@@ -65,6 +65,15 @@ public class DiaryServiceImpl implements DiaryService{
 
         //Diary diary = diaryCreateRequestDto.toEntity(user, question, comment);
 
+        Optional<User> UserById = userRepository.findById(diary.getUser_id());
+        User user = UserById.orElseThrow();
+
+        Optional<Question> QuestionById = questionRepository.findById(diary.getQuestion_id());
+        Question question = QuestionById.orElseThrow();
+
+        diary.setUser(user);
+        diary.setQuestion(question);
+
         // image 처리
         if(!image.isEmpty()) {  // image가 비어있지 않음
             String storedFileName = s3Uploader.upload(image,"images");

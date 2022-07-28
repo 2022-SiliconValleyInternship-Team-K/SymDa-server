@@ -64,6 +64,12 @@ public class Diary {
     @JoinColumn(name = "user_id")
     private User user;  // 유저 pk (FK)
 
+    @Transient
+    private Long user_id;
+
+    @Transient
+    private Long question_id;
+
     @OneToOne   // 일대일 단방향 관계
     @JoinColumn(name = "question_id")
     private Question question;  // 질문 pk (FK)
