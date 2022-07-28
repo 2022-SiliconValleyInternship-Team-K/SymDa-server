@@ -48,34 +48,35 @@ public class DiaryServiceImpl implements DiaryService{
      * 일기 작성
      * */
     @Override @Transactional
-    public DiaryResponseDto keepDiary(MultipartFile image, DiaryCreateRequestDto diaryCreateRequestDto) throws IOException {
+    public void keepDiary(MultipartFile image, Diary diary) throws IOException {
         // DiaryCreateRequestDto <-> Entity
         // userId로 참조하는 user 가져옴 (FK)
-        Optional<User> userById = userRepository.findById(diaryCreateRequestDto.getUserId());
-        User user = userById.orElseThrow();
-
-        // questionId로 참조하는 question 가져옴 (FK)
-        Optional<Question> questionById = questionRepository.findById(diaryCreateRequestDto.getQuestionId());
-        Question question = questionById.orElseThrow();
+//        Optional<User> userById = userRepository.findById(diaryCreateRequestDto.getUserId());
+//        User user = userById.orElseThrow();
+//
+//        // questionId로 참조하는 question 가져옴 (FK)
+//        Optional<Question> questionById = questionRepository.findById(diaryCreateRequestDto.getQuestionId());
+//        Question question = questionById.orElseThrow();
 
         // diaryCreateRequestDto의 weather과 emotion으로 적절한 comment 가져옴 (FK)
-        Optional<Comment> commentByEmotionAndWeather = commentRepository.findByEmotionAndWeather(diaryCreateRequestDto.getEmotion(), diaryCreateRequestDto.getWeather());
+        Optional<Comment> commentByEmotionAndWeather = commentRepository.findByEmotionAndWeather(diary.getEmotion(), diary.getWeather());
         Comment comment = commentByEmotionAndWeather.orElseThrow();
+        diary.setComment(comment);
 
-        Diary diary = diaryCreateRequestDto.toEntity(user, question, comment);
+        //Diary diary = diaryCreateRequestDto.toEntity(user, question, comment);
 
         // image 처리
         if(!image.isEmpty()) {  // image가 비어있지 않음
             String storedFileName = s3Uploader.upload(image,"images");
             diary.setImageUrl(storedFileName);
         }
-
+        
         // Diary Entity 저장
         Diary savedDiary = diaryRepository.save(diary);
 
         // Entity를 응답 Dto (user 정보 안주기 위해)로 변환해서 클라이언트에게 줌
         DiaryResponseDto diaryResponseDto = savedDiary.diaryToDiaryResponseDto(savedDiary);
-        return diaryResponseDto;
+        //return diaryResponseDto;
 
     }
     /*

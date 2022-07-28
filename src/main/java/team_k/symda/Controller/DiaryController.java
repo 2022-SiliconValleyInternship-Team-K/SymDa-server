@@ -42,15 +42,15 @@ public class DiaryController {
     @ResponseBody   // Long 타입을 리턴하고 싶은 경우 붙여야 함 (Long - 객체)
     @PostMapping(value="/diary/new",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     // form-data/multipart -> 파라미터 처리 형식으로 받기
-    public DiaryResponseDto saveDiary(@RequestParam(value="image") MultipartFile image, @ModelAttribute DiaryCreateRequestDto diaryCreateRequestDto) throws IOException {
+    public void saveDiary(@RequestParam(value="image") MultipartFile image, @ModelAttribute Diary diary) throws IOException {
         // @ModelAttribute 생략 가능하지만,, 헷갈릴까봐 추가
         System.out.println("DiaryController.saveDiary");
         System.out.println(image);
-        System.out.println(diaryCreateRequestDto);
+        System.out.println(diary);
         System.out.println("------------------------------------------------------");
 
-        DiaryResponseDto diaryResponseDto = diaryService.keepDiary(image, diaryCreateRequestDto);
-        return diaryResponseDto;
+        diaryService.keepDiary(image, diary);
+        //return diaryResponseDto;
     }
 
     /*
