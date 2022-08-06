@@ -17,6 +17,22 @@
 ---
 ## __📓 Display Flow 📓__
 
+| <img src="https://user-images.githubusercontent.com/86587287/183232287-9aca422f-f278-4728-be5d-006af7ef717a.gif" width=300px> | <img src="https://user-images.githubusercontent.com/86587287/183232247-3ae79dea-2a7a-46f9-bea3-42456438766f.gif" width=300px> |
+| ---------- | ---------- |
+|SPLASH & 로그인|회원가입|
+
+| <img src="https://user-images.githubusercontent.com/86587287/183232398-2c627949-b59b-4652-a23f-5c71d25b8105.gif" width=300px> | <img src="https://user-images.githubusercontent.com/86587287/183232402-e31e4f3d-daab-42cc-a268-658aa4da18a0.gif" width=300px> |
+| ---------- | ---------- |
+|감정 달력 & 식물|일기 모아보기|
+
+| <img src="https://user-images.githubusercontent.com/86587287/183232530-b3d31659-62d5-4f2e-801d-ed6b3c854cb6.gif" width=300px> | <img src="https://user-images.githubusercontent.com/86587287/183232549-c998cebf-bda0-47af-bc0a-1ea83e5daaeb.gif" width=300px> |
+| ---------- | ---------- |
+|일기 상세보기|일기 작성하기|
+
+| <img src="https://user-images.githubusercontent.com/86587287/183232559-65fbdded-b962-4d41-86c4-76d7cfcaece6.gif" width=300px> | <img src="https://user-images.githubusercontent.com/86587287/183232562-4d7a579c-0c20-4c97-b09d-53a79cad5e6a.gif" width=300px> |
+| ---------- | ---------- |
+|감정 분석 결과|감정 선택하기|
+
 
 ---
 ## __📓 Used Image 📓__
